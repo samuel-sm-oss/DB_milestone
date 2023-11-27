@@ -1,0 +1,162 @@
+MysQL MCQ's
+-------------
+
+Which of the following is true about MySQL?
+A) Easy to use
+B)  Scalable
+C)  High Flexibility
+D) All of the above
+
+ANSWER: D)
+
+MySQL is .................
+A) A Programming language
+B) A technique for writing reliable programs
+C) A Relational Database Management System
+D) None of Above
+
+ANSWER: C)
+
+Which of the following is not supported by MySQL?
+A) Table Joining
+B) Stored Procedures
+C) Regular Expression Matching
+D) Temporary (Hash) Tables
+
+ANSWER: D)
+
+Commands passed to the MySQL daemon are written in ..............
+A) Swedish
+B) MySql Language
+C)  English
+D) None of the above
+
+ANSWER: C)
+
+
+Which of these commands will delete a table called xyz?
+A) DROP XYZ
+B)  DROP TABLE XYZ
+C) DELETE XYZ WHERE Confirm = "YES"
+D) DROP XYZ WHERE Confirm = "YES"
+
+ANSWER: B)
+
+The main MySQL program that does all the data handling is called
+A) Httpd
+B) MySQL
+C) MySQLID
+D) Mysql.exe
+
+ANSWER: D)
+
+Which "text Type" Has The Maximum Number Of Bytes?
+A) Text
+B) Tiny Text
+C) Long Text
+D) Medium Text
+
+ANSWER: C)
+
+Which of these field types would be best to hold a .jpg image?
+A) text
+B) blob
+C) nchar binary
+D) char binary
+
+ANSWER: B)
+
+
+In a like clause, you can ask for any 6 letter value by writing
+A) LIKE .{6}
+B) LIKE ^.{6}$
+C) LIKE ??????
+D) LIKE __ (that's Six Underscore Characters)
+
+ANSWER: C)
+
+
+
+
+MongoDB MCQ’s
+—--------------------
+
+1. Which of the following is a NoSQL database?
+a) MySQL
+b) MongoDB
+c) Oracle
+d) SQL Server
+
+Answer:b)
+
+2. What is sharding in MongoDB?
+a) Splitting a database into smaller, more manageable pieces called shards
+b) Combining multiple databases into a single, unified database
+c) Creating a backup copy of a database for disaster recovery purposes
+d) None of the above
+
+Answer:a)
+
+3. What is a BSON in MongoDB?
+a) A type of data structure used to store data in MongoDB
+b) A query language used to retrieve data from MongoDB
+c) A command used to create a new database in MongoDB
+d) None of the above
+
+Answer:a)
+
+4. Which of the following is a collection in MongoDB?
+a) A group of related documents
+b) A group of related tables
+c) A group of related fields
+d) None of the above
+
+Answer:a)
+
+5. What is a replica set in MongoDB?
+a) A group of MongoDB instances that maintain the same data set
+b) A type of query used to retrieve data from MongoDB
+c) A type of index used to improve query performance
+d) None of the above
+
+Answer:a)
+
+6. Which of the following is a command used to create a new database in MongoDB?
+a) INSERT
+b) UPDATE
+c) DELETE
+d) None of the above
+
+Answer:d)
+
+7.What is the use of the $push operator in MongoDB?
+a) To add a new document to a collection
+b) To add a new field to a document
+c) To add an element to the end of an array
+d) None of the above
+
+Answer:c)
+
+8.What is the use of the $inc operator in MongoDB?
+a) To increment the value of a field by a specified amount
+b) To insert a new document into a collection
+c) To remove a field from a document
+d) None of the above
+
+Answer:a)
+
+9. What is the use of the $set operator in MongoDB?
+a) To set the value of a field in a document
+b) To insert a new document into a collection
+c) To remove a field from a document
+d) None of the above
+
+Answer:a)
+
+10. What is the use of the $skip operator in MongoDB?
+a) To sort the documents in a collection
+b) To group documents in a collection based on a specified condition
+c) To skip a specified number of documents in the result set
+d) None of the above
+
+Answer:c)

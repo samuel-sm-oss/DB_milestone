@@ -1,0 +1,660 @@
+Please enter a MongoDB connection string (Default: mongodb://localhost/):
+
+Current Mongosh Log ID: 65642158356778e48b56bfa4
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.1.0
+Using MongoDB:          7.0.3
+Using Mongosh:          2.1.0
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2023-11-22T16:16:47.556+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> use db_milestone;
+switched to db db_milestone
+db_milestone> db.createCollection('book_store')
+{ ok: 1 }
+db_milestone> db.Bookstore.insertMany([
+...   {
+...     book_id: 1,
+...     Btitle: "The Great Gatsby",
+...     authors: ["F. Scott Fitzgerald"],
+...     price: 5000
+...   },
+...   {
+...     book_id: 2,
+...     Btitle: "To Kill a Mockingbird",
+...     authors: ["Harper Lee"],
+...     price: 4000
+...   },
+...   {
+...     book_id: 3,
+...     Btitle: "1984",
+...     authors: ["George Orwell"],
+...     price: 6000
+...   },
+... {
+...     book_id: 4,
+...     Btitle: "REVOLUTION 220",
+...     authors: ["F. Scott Fitzgerald"],
+...     price: 8000
+...   },
+...  {
+...     book_id: 5,
+...     Btitle: "whispers of time",
+...     authors: ["Harper Lee"],
+...     price: 7000
+...   },
+... {
+...     book_id: 6,
+...     Btitle: "DARKNESS TO LIGHT",
+...     authors: ["George Orwell"],
+...     price: 7500
+...   },
+... {
+...     book_id: 7,
+...     Btitle: "WE ARE DISPLACED",
+...     authors: ["F. Scott Fitzgerald"],
+...     price: 5800
+...   },
+... {
+...     book_id: 8,
+...     Btitle: "END GAME",
+...     authors: ["Harper Lee"],
+...     price: 5850
+...   },
+... {
+...     book_id: 9,
+...     Btitle:"PYRE",
+...     authors: ["George Orwell"],
+...     price: 2500
+...   },
+... {
+...     book_id: 10,
+...     Btitle:"SNAKES IN GANGA",
+...     authors: ["F. Scott Fitzgerald"],
+...     price: 9000
+...   },
+... ]);
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('656429d4356778e48b56bfa5'),
+    '1': ObjectId('656429d4356778e48b56bfa6'),
+    '2': ObjectId('656429d4356778e48b56bfa7'),
+    '3': ObjectId('656429d4356778e48b56bfa8'),
+    '4': ObjectId('656429d4356778e48b56bfa9'),
+    '5': ObjectId('656429d4356778e48b56bfaa'),
+    '6': ObjectId('656429d4356778e48b56bfab'),
+    '7': ObjectId('656429d4356778e48b56bfac'),
+    '8': ObjectId('656429d4356778e48b56bfad'),
+    '9': ObjectId('656429d4356778e48b56bfae')
+  }
+}
+db_milestone> db.Bookstore.find({}, {
+...   _id: 0,
+...   book_id: 1,
+...   Btitle: 1,
+...   authors: 1,
+...   price: 1
+... }).limit(10);
+[
+  {
+    book_id: 1,
+    Btitle: 'The Great Gatsby',
+    authors: [ 'F. Scott Fitzgerald' ],
+    price: 5000
+  },
+  {
+    book_id: 2,
+    Btitle: 'To Kill a Mockingbird',
+    authors: [ 'Harper Lee' ],
+    price: 4000
+  },
+  {
+    book_id: 3,
+    Btitle: '1984',
+    authors: [ 'George Orwell' ],
+    price: 6000
+  },
+  {
+    book_id: 4,
+    Btitle: 'REVOLUTION 220',
+    authors: [ 'F. Scott Fitzgerald' ],
+    price: 8000
+  },
+  {
+    book_id: 5,
+    Btitle: 'whispers of time',
+    authors: [ 'Harper Lee' ],
+    price: 7000
+  },
+  {
+    book_id: 6,
+    Btitle: 'DARKNESS TO LIGHT',
+    authors: [ 'George Orwell' ],
+    price: 7500
+  },
+  {
+    book_id: 7,
+    Btitle: 'WE ARE DISPLACED',
+    authors: [ 'F. Scott Fitzgerald' ],
+    price: 5800
+  },
+  {
+    book_id: 8,
+    Btitle: 'END GAME',
+    authors: [ 'Harper Lee' ],
+    price: 5850
+  },
+  {
+    book_id: 9,
+    Btitle: 'PYRE',
+    authors: [ 'George Orwell' ],
+    price: 2500
+  },
+  {
+    book_id: 10,
+    Btitle: 'SNAKES IN GANGA',
+    authors: [ 'F. Scott Fitzgerald' ],
+    price: 9000
+  }
+]
+db_milestone> db.Bookstore.find({}, { _id: 0, book_id: 0, Btitle: 1, authors: 1, price: 1 })
+MongoServerError: Cannot do inclusion on field Btitle in exclusion projection
+db_milestone> db.Bookstore.find({}, { _id: 0,Btitle: 1, authors: 1, price: 1 })
+[
+  {
+    Btitle: 'The Great Gatsby',
+    authors: [ 'F. Scott Fitzgerald' ],
+    price: 5000
+  },
+  {
+    Btitle: 'To Kill a Mockingbird',
+    authors: [ 'Harper Lee' ],
+    price: 4000
+  },
+  { Btitle: '1984', authors: [ 'George Orwell' ], price: 6000 },
+  {
+    Btitle: 'REVOLUTION 220',
+    authors: [ 'F. Scott Fitzgerald' ],
+    price: 8000
+  },
+  {
+    Btitle: 'whispers of time',
+    authors: [ 'Harper Lee' ],
+    price: 7000
+  },
+  {
+    Btitle: 'DARKNESS TO LIGHT',
+    authors: [ 'George Orwell' ],
+    price: 7500
+  },
+  {
+    Btitle: 'WE ARE DISPLACED',
+    authors: [ 'F. Scott Fitzgerald' ],
+    price: 5800
+  },
+  { Btitle: 'END GAME', authors: [ 'Harper Lee' ], price: 5850 },
+  { Btitle: 'PYRE', authors: [ 'George Orwell' ], price: 2500 },
+  {
+    Btitle: 'SNAKES IN GANGA',
+    authors: [ 'F. Scott Fitzgerald' ],
+    price: 9000
+  }
+]
+db_milestone> db.Bookstore.find({ authors: { $eq: 'F. Scott Fitzgerald' } }, { _id: 0, Btitle: 1, authors: 1, price: 1 }).limit(3);
+[
+  {
+    Btitle: 'The Great Gatsby',
+    authors: [ 'F. Scott Fitzgerald' ],
+    price: 5000
+  },
+  {
+    Btitle: 'REVOLUTION 220',
+    authors: [ 'F. Scott Fitzgerald' ],
+    price: 8000
+  },
+  {
+    Btitle: 'WE ARE DISPLACED',
+    authors: [ 'F. Scott Fitzgerald' ],
+    price: 5800
+  }
+]
+db_milestone> db.Bookstore.find({ price: { $gt: 1500 } }, { _id: 0})
+[
+  {
+    book_id: 1,
+    Btitle: 'The Great Gatsby',
+    authors: [ 'F. Scott Fitzgerald' ],
+    price: 5000
+  },
+  {
+    book_id: 2,
+    Btitle: 'To Kill a Mockingbird',
+    authors: [ 'Harper Lee' ],
+    price: 4000
+  },
+  {
+    book_id: 3,
+    Btitle: '1984',
+    authors: [ 'George Orwell' ],
+    price: 6000
+  },
+  {
+    book_id: 4,
+    Btitle: 'REVOLUTION 220',
+    authors: [ 'F. Scott Fitzgerald' ],
+    price: 8000
+  },
+  {
+    book_id: 5,
+    Btitle: 'whispers of time',
+    authors: [ 'Harper Lee' ],
+    price: 7000
+  },
+  {
+    book_id: 6,
+    Btitle: 'DARKNESS TO LIGHT',
+    authors: [ 'George Orwell' ],
+    price: 7500
+  },
+  {
+    book_id: 7,
+    Btitle: 'WE ARE DISPLACED',
+    authors: [ 'F. Scott Fitzgerald' ],
+    price: 5800
+  },
+  {
+    book_id: 8,
+    Btitle: 'END GAME',
+    authors: [ 'Harper Lee' ],
+    price: 5850
+  },
+  {
+    book_id: 9,
+    Btitle: 'PYRE',
+    authors: [ 'George Orwell' ],
+    price: 2500
+  },
+  {
+    book_id: 10,
+    Btitle: 'SNAKES IN GANGA',
+    authors: [ 'F. Scott Fitzgerald' ],
+    price: 9000
+  }
+]
+db_milestone> db.Bookstore.find({ price: { $gt: 800, $lt: 2000 } }, { _id: 0, Btitle: 1, authors: 1, price: 1 });
+
+db_milestone> db.Bookstore.find({ price: { $gt: 2500, $lt: 5000 } }, { _id: 0, Btitle: 1, authors: 1, price: 1 });
+[
+  {
+    Btitle: 'To Kill a Mockingbird',
+    authors: [ 'Harper Lee' ],
+    price: 4000
+  }
+]
+db_milestone> db.Bookstore.find({},{_id:0}).sort({Btitle:1});
+[
+  {
+    book_id: 3,
+    Btitle: '1984',
+    authors: [ 'George Orwell' ],
+    price: 6000
+  },
+  {
+    book_id: 6,
+    Btitle: 'DARKNESS TO LIGHT',
+    authors: [ 'George Orwell' ],
+    price: 7500
+  },
+  {
+    book_id: 8,
+    Btitle: 'END GAME',
+    authors: [ 'Harper Lee' ],
+    price: 5850
+  },
+  {
+    book_id: 9,
+    Btitle: 'PYRE',
+    authors: [ 'George Orwell' ],
+    price: 2500
+  },
+  {
+    book_id: 4,
+    Btitle: 'REVOLUTION 220',
+    authors: [ 'F. Scott Fitzgerald' ],
+    price: 8000
+  },
+  {
+    book_id: 10,
+    Btitle: 'SNAKES IN GANGA',
+    authors: [ 'F. Scott Fitzgerald' ],
+    price: 9000
+  },
+  {
+    book_id: 1,
+    Btitle: 'The Great Gatsby',
+    authors: [ 'F. Scott Fitzgerald' ],
+    price: 5000
+  },
+  {
+    book_id: 2,
+    Btitle: 'To Kill a Mockingbird',
+    authors: [ 'Harper Lee' ],
+    price: 4000
+  },
+  {
+    book_id: 7,
+    Btitle: 'WE ARE DISPLACED',
+    authors: [ 'F. Scott Fitzgerald' ],
+    price: 5800
+  },
+  {
+    book_id: 5,
+    Btitle: 'whispers of time',
+    authors: [ 'Harper Lee' ],
+    price: 7000
+  }
+]
+db_milestone> db.Bookstore.find({authors:'Harper Lee'});
+[
+  {
+    _id: ObjectId('656429d4356778e48b56bfa6'),
+    book_id: 2,
+    Btitle: 'To Kill a Mockingbird',
+    authors: [ 'Harper Lee' ],
+    price: 4000
+  },
+  {
+    _id: ObjectId('656429d4356778e48b56bfa9'),
+    book_id: 5,
+    Btitle: 'whispers of time',
+    authors: [ 'Harper Lee' ],
+    price: 7000
+  },
+  {
+    _id: ObjectId('656429d4356778e48b56bfac'),
+    book_id: 8,
+    Btitle: 'END GAME',
+    authors: [ 'Harper Lee' ],
+    price: 5850
+  }
+]
+db_milestone> db.Bookstore.find({authors:'Harper Lee'},{_id:0});
+[
+  {
+    book_id: 2,
+    Btitle: 'To Kill a Mockingbird',
+    authors: [ 'Harper Lee' ],
+    price: 4000
+  },
+  {
+    book_id: 5,
+    Btitle: 'whispers of time',
+    authors: [ 'Harper Lee' ],
+    price: 7000
+  },
+  {
+    book_id: 8,
+    Btitle: 'END GAME',
+    authors: [ 'Harper Lee' ],
+    price: 5850
+  }
+]
+db_milestone> db.Bookstore.find();
+[
+  {cknowledged: true,
+    _id: ObjectId('656429d4356778e48b56bfa5'),
+    book_id: 1, 1,
+    Btitle: 'The Great Gatsby',
+    authors: [ 'F. Scott Fitzgerald' ],
+    price: 5000
+  },
+  {
+    _id: ObjectId('656429d4356778e48b56bfa6'),
+    book_id: 2,
+    Btitle: 'To Kill a Mockingbird',
+    authors: [ 'Harper Lee' ],
+    price: 4000
+  },
+  {
+    _id: ObjectId('656429d4356778e48b56bfa7'),
+    book_id: 3,
+    Btitle: '1984',
+    authors: [ 'George Orwell' ],
+    price: 6000
+  },
+  {
+    _id: ObjectId('656429d4356778e48b56bfa8'),
+    book_id: 4,
+    Btitle: 'REVOLUTION 220',
+    authors: [ 'F. Scott Fitzgerald' ],
+    price: 8000
+  },
+  {
+    _id: ObjectId('656429d4356778e48b56bfa9'),
+    book_id: 5,
+    Btitle: 'whispers of time',
+    authors: [ 'Harper Lee' ],
+    price: 7000
+  },
+  {
+    _id: ObjectId('656429d4356778e48b56bfaa'),
+    book_id: 6,
+    Btitle: 'DARKNESS TO LIGHT',
+    authors: [ 'George Orwell' ],
+    price: 7500
+  },
+  {
+    _id: ObjectId('656429d4356778e48b56bfab'),
+    book_id: 7,
+    Btitle: 'WE ARE DISPLACED',
+    authors: [ 'F. Scott Fitzgerald' ],
+    price: 5800
+  },
+  {
+    _id: ObjectId('656429d4356778e48b56bfac'),
+    book_id: 8,
+    Btitle: 'END GAME',
+    authors: [ 'Harper Lee' ],
+    price: 6850
+  },
+  {
+    _id: ObjectId('656429d4356778e48b56bfad'),
+    book_id: 9,
+    Btitle: 'PYRE',
+    authors: [ 'George Orwell' ],
+    price: 2500
+  },
+  {
+    _id: ObjectId('656429d4356778e48b56bfae'),
+    book_id: 10,
+    Btitle: 'SNAKES IN GANGA',
+    authors: [ 'F. Scott Fitzgerald' ],
+    price: 9000
+  }
+]
+...   { Btitle: "SNAKES IN GANGA" },
+...   {
+...     $set: { price: 2000 },
+...     $push: { authors: "SAM" },
+...     $pull: { authors: "F. Scott Fitzgerald" },
+...     $setOnInsert: { book_id: 123 },
+...   },
+...   { upsert: true }
+db_milestone> db.Bookstore.update( { Btitle: "SNAKES IN GANGA" }, { $set: { price: 2000 }, $push: { authors: "SAM" }, $pull:db_milestone> db.Bookstore.update( { Btitle: "SNAKES IN GANGA" }, { $set: { price: 2000 }, $push: { authors: "SAM" }, $pull: { authors: "F. Scott Fitzgerald" }, $setOnInsert: { book_id: 10 } }, { upsert: true } );
+MongoServerError: Updating the path 'authors' would create a conflict at 'authors'
+db_milestone> db.Bookstore.insert({book_id:11,Btitle:'THE TREES',authors:['ashok','aasif'],price:10000});
+db_milestone> db.Bookstore.find();
+[
+  {cknowledged: true,
+    _id: ObjectId('656429d4356778e48b56bfa5'),e48b56bfaf') }
+    book_id: 1,
+    Btitle: 'The Great Gatsby',
+    authors: [ 'F. Scott Fitzgerald' ],
+    price: 5000
+  },
+  {
+    _id: ObjectId('656429d4356778e48b56bfa6'),
+    book_id: 2,
+    Btitle: 'To Kill a Mockingbird',
+    authors: [ 'Harper Lee' ],
+    price: 4000
+  },
+  {
+    _id: ObjectId('656429d4356778e48b56bfa7'),
+    book_id: 3,
+    Btitle: '1984',
+    authors: [ 'George Orwell' ],
+    price: 6000
+  },
+  {
+    _id: ObjectId('656429d4356778e48b56bfa8'),
+    book_id: 4,
+    Btitle: 'REVOLUTION 220',
+    authors: [ 'F. Scott Fitzgerald' ],
+    price: 8000
+  },
+  {
+    _id: ObjectId('656429d4356778e48b56bfa9'),
+    book_id: 5,
+    Btitle: 'whispers of time',
+    authors: [ 'Harper Lee' ],
+    price: 7000
+  },
+  {
+    _id: ObjectId('656429d4356778e48b56bfaa'),
+    book_id: 6,
+    Btitle: 'DARKNESS TO LIGHT',
+    authors: [ 'George Orwell' ],
+    price: 7500
+  },
+  {
+    _id: ObjectId('656429d4356778e48b56bfab'),
+    book_id: 7,
+    Btitle: 'WE ARE DISPLACED',
+    authors: [ 'F. Scott Fitzgerald' ],
+    price: 5800
+  },
+  {
+    _id: ObjectId('656429d4356778e48b56bfac'),
+    book_id: 8,
+    Btitle: 'END GAME',
+    authors: [ 'Harper Lee' ],
+    price: 6850
+  },
+  {
+    _id: ObjectId('656429d4356778e48b56bfad'),
+    book_id: 9,
+    Btitle: 'PYRE',
+    authors: [ 'George Orwell' ],
+    price: 2500
+  },
+  {
+    _id: ObjectId('656429d4356778e48b56bfae'),
+    book_id: 10,
+    Btitle: 'SNAKES IN GANGA',
+    authors: [ 'F. Scott Fitzgerald' ],
+    price: 9000
+  },
+  {
+    _id: ObjectId('656438cb356778e48b56bfaf'),
+    book_id: 11,
+    Btitle: 'THE TREES',
+    authors: [ 'ashok', 'aasif' ],
+    price: 10000
+  }
+]
+db_milestone> db.Bookstore.update( { Btitle: "THE TREES" }, { $set: { price: 2000 }, $push: { authors: "SAM" }, $pull: { authors: "aasif" }, $setOnInsert: { book_id: 123 } }, { upsert: true } );
+MongoServerError: Updating the path 'authors' would create a conflict at 'authors'
+db_milestone> db.Bookstore.update( { Btitle: "THE TREES" }, { $set: { price: 2000 }},{ $push: { authors: "SAM" }},{ $pull: { authors: "aasif" }},{ $setOnInsert: { book_id: 123 } }, { upsert: true } );
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db_milestone> db.Bookstore.find();
+[
+  {
+    _id: ObjectId('656429d4356778e48b56bfa5'),
+    book_id: 1,
+    Btitle: 'The Great Gatsby',
+    authors: [ 'F. Scott Fitzgerald' ],
+    price: 5000
+  },
+  {
+    _id: ObjectId('656429d4356778e48b56bfa6'),
+    book_id: 2,
+    Btitle: 'To Kill a Mockingbird',
+    authors: [ 'Harper Lee' ],
+    price: 4000
+  },
+  {
+    _id: ObjectId('656429d4356778e48b56bfa7'),
+    book_id: 3,
+    Btitle: '1984',
+    authors: [ 'George Orwell' ],
+    price: 6000
+  },
+  {
+    _id: ObjectId('656429d4356778e48b56bfa8'),
+    book_id: 4,
+    Btitle: 'REVOLUTION 220',
+    authors: [ 'F. Scott Fitzgerald' ],
+    price: 8000
+  },
+  {
+    _id: ObjectId('656429d4356778e48b56bfa9'),
+    book_id: 5,
+    Btitle: 'whispers of time',
+    authors: [ 'Harper Lee' ],
+    price: 7000
+  },
+  {
+    _id: ObjectId('656429d4356778e48b56bfaa'),
+    book_id: 6,
+    Btitle: 'DARKNESS TO LIGHT',
+    authors: [ 'George Orwell' ],
+    price: 7500
+  },
+  {
+    _id: ObjectId('656429d4356778e48b56bfab'),
+    book_id: 7,
+    Btitle: 'WE ARE DISPLACED',
+    authors: [ 'F. Scott Fitzgerald' ],
+    price: 5800
+  },
+  {
+    _id: ObjectId('656429d4356778e48b56bfac'),
+    book_id: 8,
+    Btitle: 'END GAME',
+    authors: [ 'Harper Lee' ],
+    price: 6850
+  },
+  {
+    _id: ObjectId('656429d4356778e48b56bfad'),
+    book_id: 9,
+    Btitle: 'PYRE',
+    authors: [ 'George Orwell' ],
+    price: 2500
+  },
+  {
+    _id: ObjectId('656429d4356778e48b56bfae'),
+    book_id: 10,
+    Btitle: 'SNAKES IN GANGA',
+    authors: [ 'F. Scott Fitzgerald' ],
+    price: 9000
+  },
+  {
+    _id: ObjectId('656438cb356778e48b56bfaf'),
+    book_id: 11,
+    Btitle: 'THE TREES',
+    authors: [ 'ashok', 'SAM' ],
+    price: 2000
+  }
+]

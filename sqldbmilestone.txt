@@ -1,0 +1,153 @@
+mysql> create database milestone1;
+Query OK, 1 row affected (0.10 sec)
+
+mysql> create table teachers(tid int,name varchar(20),dept varchar(20),salary int,gender varchar(20));
+ERROR 1046 (3D000): No database selected
+mysql> use milestone1;
+Database changed
+mysql> create table teachers(tid int,name varchar(20),dept varchar(20),salary int,gender varchar(20));
+Query OK, 0 rows affected (0.10 sec)
+
+mysql> insert into teachers values(1,ashok,computer,15000,male),(2,janani,history,12000,female),(3,sam,computer,16000,male),(4,divya,history,13000,female),(5,vignesh,computer,18000,male);
+ERROR 1054 (42S22): Unknown column 'ashok' in 'field list'
+mysql> insert into teachers values(1,'ashok','computer',15000,'male'),(2,'janani','history',12000,'female'),(3,'sam','computer',16000,'male'),(4,'divya','history',13000,'female'),(5,'vignesh','computer',18000,'male');
+Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select*from teachers;
++------+---------+----------+--------+--------+
+| tid  | name    | dept     | salary | gender |
++------+---------+----------+--------+--------+
+|    1 | ashok   | computer |  15000 | male   |
+|    2 | janani  | history  |  12000 | female |
+|    3 | sam     | computer |  16000 | male   |
+|    4 | divya   | history  |  13000 | female |
+|    5 | vignesh | computer |  18000 | male   |
++------+---------+----------+--------+--------+
+5 rows in set (0.01 sec)
+
+mysql> select*from teachers where dept='history';
++------+--------+---------+--------+--------+
+| tid  | name   | dept    | salary | gender |
++------+--------+---------+--------+--------+
+|    2 | janani | history |  12000 | female |
+|    4 | divya  | history |  13000 | female |
++------+--------+---------+--------+--------+
+2 rows in set (0.01 sec)
+
+mysql> alter table teachers add doa date after salary;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select*from teachers;
++------+---------+----------+--------+------+--------+
+| tid  | name    | dept     | salary | doa  | gender |
++------+---------+----------+--------+------+--------+
+|    1 | ashok   | computer |  15000 | NULL | male   |
+|    2 | janani  | history  |  12000 | NULL | female |
+|    3 | sam     | computer |  16000 | NULL | male   |
+|    4 | divya   | history  |  13000 | NULL | female |
+|    5 | vignesh | computer |  18000 | NULL | male   |
++------+---------+----------+--------+------+--------+
+5 rows in set (0.00 sec)
+
+mysql> update teachers set doa='2023-11-11' where tid=1;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update teachers set doa='2023-11-15' where tid=2;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update teachers set doa='2023-11-23' where tid=3;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update teachers set doa='2023-11-30' where tid=4;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update teachers set doa='2023-11-21' where tid=5;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select*from teachers;
++------+---------+----------+--------+------------+--------+
+| tid  | name    | dept     | salary | doa        | gender |
++------+---------+----------+--------+------------+--------+
+|    1 | ashok   | computer |  15000 | 2023-11-11 | male   |
+|    2 | janani  | history  |  12000 | 2023-11-15 | female |
+|    3 | sam     | computer |  16000 | 2023-11-23 | male   |
+|    4 | divya   | history  |  13000 | 2023-11-30 | female |
+|    5 | vignesh | computer |  18000 | 2023-11-21 | male   |
++------+---------+----------+--------+------------+--------+
+5 rows in set (0.00 sec)
+
+mysql> select doa from teachers orderby doa asc;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'doa asc' at line 1
+mysql> select name,doa from teachers orderby doa ASC;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'doa ASC' at line 1
+mysql> select name,doa from teachers order by doa ASC;
++---------+------------+
+| name    | doa        |
++---------+------------+
+| ashok   | 2023-11-11 |
+| janani  | 2023-11-15 |
+| vignesh | 2023-11-21 |
+| sam     | 2023-11-23 |
+| divya   | 2023-11-30 |
++---------+------------+
+5 rows in set (0.00 sec)
+
+mysql> select name,dept,salary from teachers where gender='male';
++---------+----------+--------+
+| name    | dept     | salary |
++---------+----------+--------+
+| ashok   | computer |  15000 |
+| sam     | computer |  16000 |
+| vignesh | computer |  18000 |
++---------+----------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select count(salary) from teachers where salary<10000;
++---------------+
+| count(salary) |
++---------------+
+|             0 |
++---------------+
+1 row in set (0.01 sec)
+
+mysql> insert into teachers values(8,mersha,computer,12000,'female');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into teachers values(8,'mersha','computer',12000,'female');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into teachers values(8,'mersha','computer',12000,'2023-11-26','female');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select min(salary) from teachers;
++-------------+
+| min(salary) |
++-------------+
+|       12000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select tid,name,dept,min(salary) from teachers;
+ERROR 1140 (42000): In aggregated query without GROUP BY, expression #1 of SELECT list contains nonaggregated column 'milestone1.teachers.tid'; this is incompatible with sql_mode=only_full_group_by
+mysql> select * from teachers where salary= (select min(salary)from teachers where salary> (select min(salary)from teachers));
++------+-------+---------+--------+------------+--------+
+| tid  | name  | dept    | salary | doa        | gender |
++------+-------+---------+--------+------------+--------+
+|    4 | divya | history |  13000 | 2023-11-30 | female |
++------+-------+---------+--------+------------+--------+
+1 row in set (0.01 sec)
+
+mysql> select avg(salary) from teachers where dept='history';
++-------------+
+| avg(salary) |
++-------------+
+|  12500.0000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> Terminal close -- exit!
